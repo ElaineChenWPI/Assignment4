@@ -67,7 +67,7 @@ public class ElbonianArabicConverter {
             if (number.contains("F") && number.contains("C")) {
                 throw new MalformedNumberException("Can't use F and C in the same Elbonian number");
             } else if (number.contains("N") && number.contains("X")) {
-                throw new MalformedNumberException("Can't ise N and X in the same Elbonian number");
+                throw new MalformedNumberException("Can't use N and X in the same Elbonian number");
             } else if (number.contains("Y") && number.contains("I")) {
                 throw new MalformedNumberException("Can't use Y and I in the same Elbonian number");
             }
