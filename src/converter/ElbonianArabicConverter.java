@@ -56,7 +56,7 @@ public class ElbonianArabicConverter {
         }
 
         //Check for M, C, X, and I can be repeated up to three times in a row
-        if(number.contains("M") || number.contains("C")){
+        if(number.contains("M") || number.contains("C") || number.contains("X") || number.contains("I") ){
             int flagM = 0;
             int flagC = 0;
             int flagX = 0;
@@ -184,30 +184,42 @@ public class ElbonianArabicConverter {
      *
      * @return An arabic value
      */
-    public int toArabic() {
+    public int toArabic() throws MalformedNumberException {
         int finalNum = 0;
         for(int i = 0; i<number.length(); i++) {
             switch(number.charAt(i)) {
                 case 'M' :
                     finalNum = finalNum + 1000;
+                    break;
                 case 'D' :
                     finalNum = finalNum + 500;
+                    break;
                 case 'F' :
                     finalNum = finalNum + 400;
+                    break;
                 case 'C' :
                     finalNum = finalNum + 100;
+                    break;
                 case 'L' :
                     finalNum = finalNum + 50;
+                    break;
                 case 'N' :
                     finalNum = finalNum + 40;
+                    break;
                 case 'X' :
                     finalNum = finalNum + 10;
+                    break;
                 case 'V' :
                     finalNum = finalNum + 5;
+                    break;
                 case 'Y' :
                     finalNum = finalNum + 4;
+                    break;
                 case 'I' :
                     finalNum = finalNum + 1;
+                    break;
+                default:
+                    throw new MalformedNumberException("This string contains letters not in the alphabet");
             }
         }
         return finalNum;
