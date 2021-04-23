@@ -105,72 +105,69 @@ public class ElbonianArabicConverter {
             }
 
         //Check for correct order of numbers (Subpoint 6)
-        //Special case I
-        if(number.charAt(0) == 'I'){
-            for(int i =0; i<4; i++){
-                if(number.charAt(i) == 'M' || number.charAt(i) == 'C' || number.charAt(i) == 'F' ||
-                number.charAt(i) == 'D' || number.charAt(i) == 'X' || number.charAt(i) == 'N' || number.charAt(i) == 'L' ||
-                number.charAt(i) == 'V'){
-                    throw new MalformedNumberException("Letter I cannot appear before other letters");
-                }
-            }
-        }
-        //Other letters
         for(int i = 0; i<number.length(); i++){
             switch (number.charAt(i)){
+                case 'I':
+                    for(int j = i; j<number.length(); j++) {
+                        if (number.charAt(j) == 'M' || number.charAt(j) == 'C' || number.charAt(j) == 'F' ||
+                                number.charAt(j) == 'D' || number.charAt(j) == 'X' || number.charAt(j) == 'N' || number.charAt(j) == 'L' ||
+                                number.charAt(j) == 'V' || number.charAt(j) == 'Y') {
+                            throw new MalformedNumberException("Letter I cannot appear before other letters");
+                        }
+                    }
                 case 'Y':
                     for(int j = i; j<number.length(); j++){
-                        if(number.charAt(i) == 'M' || number.charAt(i) == 'C' || number.charAt(i) == 'F' ||
-                           number.charAt(i) == 'D' || number.charAt(i) == 'X' || number.charAt(i) == 'N' ||
-                           number.charAt(i) == 'L' || number.charAt(i) == 'V'){
+                        if(number.charAt(j) == 'M' || number.charAt(j) == 'C' || number.charAt(j) == 'F' ||
+                           number.charAt(j) == 'D' || number.charAt(j) == 'X' || number.charAt(j) == 'N' ||
+                           number.charAt(j) == 'L' || number.charAt(j) == 'V'){
                             throw new MalformedNumberException("Letter Y cannot appear before other letters");
                         }
                     }
                 case 'V':
                     for(int j = i; j<number.length(); j++){
-                        if(number.charAt(i) == 'M' || number.charAt(i) == 'C' || number.charAt(i) == 'F' ||
-                                number.charAt(i) == 'D' || number.charAt(i) == 'X' || number.charAt(i) == 'N' ||
-                                number.charAt(i) == 'L'){
+                        if(number.charAt(j) == 'M' || number.charAt(j) == 'C' || number.charAt(j) == 'F' ||
+                                number.charAt(j) == 'D' || number.charAt(j) == 'X' || number.charAt(j) == 'N' ||
+                                number.charAt(j) == 'L'){
                             throw new MalformedNumberException("Letter V cannot appear before other letters");
                         }
                     }
                 case 'X':
                     for(int j = i; j<number.length(); j++){
-                        if(number.charAt(i) == 'M' || number.charAt(i) == 'C' || number.charAt(i) == 'F' ||
-                                number.charAt(i) == 'D' || number.charAt(i) == 'N' || number.charAt(i) == 'L') {
+                        if(number.charAt(j) == 'M' || number.charAt(j) == 'C' || number.charAt(j) == 'F' ||
+                                number.charAt(j) == 'D' || number.charAt(j) == 'N' || number.charAt(j) == 'L') {
                             throw new MalformedNumberException("Letter V cannot appear before other letters");
                         }
                     }
                 case 'N':
                     for(int j = i; j<number.length(); j++){
-                        if(number.charAt(i) == 'M' || number.charAt(i) == 'C' || number.charAt(i) == 'F' ||
-                                number.charAt(i) == 'D' || number.charAt(i) == 'L') {
+                        if(number.charAt(j) == 'M' || number.charAt(j) == 'C' || number.charAt(j) == 'F' ||
+                                number.charAt(j) == 'D' || number.charAt(j) == 'L') {
                             throw new MalformedNumberException("Letter V cannot appear before other letters");
                         }
                     }
                 case 'L':
                     for(int j = i; j<number.length(); j++){
-                        if(number.charAt(i) == 'M' || number.charAt(i) == 'C' || number.charAt(i) == 'F' ||
-                                number.charAt(i) == 'D') {
+                        if(number.charAt(j) == 'M' || number.charAt(j) == 'C' || number.charAt(j) == 'F' ||
+                                number.charAt(j) == 'D') {
                             throw new MalformedNumberException("Letter V cannot appear before other letters");
                         }
                     }
                 case 'C':
                     for(int j = i; j<number.length(); j++){
-                        if(number.charAt(i) == 'M' || number.charAt(i) == 'F' ||
-                                number.charAt(i) == 'D') {
+                        if(number.charAt(j) == 'M' || number.charAt(j) == 'F' ||
+                                number.charAt(j) == 'D') {
                             throw new MalformedNumberException("Letter V cannot appear before other letters");
                         }
                     }
                 case 'F':
                     for(int j = i; j<number.length(); j++){
-                        if(number.charAt(i) == 'M' || number.charAt(i) == 'D') {
+                        if(number.charAt(j) == 'M' || number.charAt(j) == 'D') {
                             throw new MalformedNumberException("Letter V cannot appear before other letters");
                         }
                     }
                 case 'D':
                     for(int j = i; j<number.length(); j++){
-                        if(number.charAt(i) == 'M') {
+                        if(number.charAt(j) == 'M') {
                             throw new MalformedNumberException("Letter V cannot appear before other letters");
                         }
                     }
