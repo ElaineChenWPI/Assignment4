@@ -72,17 +72,17 @@ public class ElbonianArabicConverter {
                 throw new MalformedNumberException("Can't use Y and I in the same Elbonian number");
             }
 
-            //Check for M, C, X, and I can be repeated up to three times in a row
-            if (number.contains("M") || number.contains("C")) {
-                int flagM = 0;
-                int flagC = 0;
-                int flagX = 0;
-                int flagI = 0;
-                for (int i = 0; i < number.length(); i++) {
-                    if (number.charAt(i) == 'M') flagM++;
-                    else if (number.charAt(i) == 'C') flagC++;
-                    else if (number.charAt(i) == 'X') flagX++;
-                    else if (number.charAt(i) == 'I') flagI++;
+        //Check for M, C, X, and I can be repeated up to three times in a row
+        if(number.contains("M") || number.contains("C") || number.contains("X") || number.contains("I") ){
+            int flagM = 0;
+            int flagC = 0;
+            int flagX = 0;
+            int flagI = 0;
+            for(int i = 0; i<number.length(); i++) {
+                if (number.charAt(i) == 'M') flagM++;
+                else if (number.charAt(i) == 'C') flagC++;
+                else if (number.charAt(i) == 'X') flagX++;
+                else if (number.charAt(i) == 'I') flagI++;
                 }
                 if (flagM > 3 || flagC > 3 || flagX > 3 || flagI > 3) {
                     throw new MalformedNumberException("M, C, X, and I can only be repeated up to three times in a row");
@@ -190,40 +190,52 @@ public class ElbonianArabicConverter {
         this.number = number;
     }
 
-        /**
-         * Converts the number to an Arabic numeral or returns the current value as an int if it is already
-         * in the Arabic form.
-         *
-         * @return An arabic value
-         */
-        public int toArabic () {
-            int finalNum = 0;
-            for (int i = 0; i < number.length(); i++) {
-                switch (number.charAt(i)) {
-                    case 'M':
-                        finalNum = finalNum + 1000;
-                    case 'D':
-                        finalNum = finalNum + 500;
-                    case 'F':
-                        finalNum = finalNum + 400;
-                    case 'C':
-                        finalNum = finalNum + 100;
-                    case 'L':
-                        finalNum = finalNum + 50;
-                    case 'N':
-                        finalNum = finalNum + 40;
-                    case 'X':
-                        finalNum = finalNum + 10;
-                    case 'V':
-                        finalNum = finalNum + 5;
-                    case 'Y':
-                        finalNum = finalNum + 4;
-                    case 'I':
-                        finalNum = finalNum + 1;
-                }
+    /**
+     * Converts the number to an Arabic numeral or returns the current value as an int if it is already
+     * in the Arabic form.
+     *
+     * @return An arabic value
+     */
+    public int toArabic() throws MalformedNumberException {
+        int finalNum = 0;
+        for(int i = 0; i<number.length(); i++) {
+            switch(number.charAt(i)) {
+                case 'M' :
+                    finalNum = finalNum + 1000;
+                    break;
+                case 'D' :
+                    finalNum = finalNum + 500;
+                    break;
+                case 'F' :
+                    finalNum = finalNum + 400;
+                    break;
+                case 'C' :
+                    finalNum = finalNum + 100;
+                    break;
+                case 'L' :
+                    finalNum = finalNum + 50;
+                    break;
+                case 'N' :
+                    finalNum = finalNum + 40;
+                    break;
+                case 'X' :
+                    finalNum = finalNum + 10;
+                    break;
+                case 'V' :
+                    finalNum = finalNum + 5;
+                    break;
+                case 'Y' :
+                    finalNum = finalNum + 4;
+                    break;
+                case 'I' :
+                    finalNum = finalNum + 1;
+                    break;
+                default:
+                    throw new MalformedNumberException("This string contains letters not in the alphabet");
             }
-            return finalNum;
         }
+        return finalNum;
+    }
 
         /**
          * Converts the number to an Elbonian numeral or returns the current value if it is already in the Elbonian form.
