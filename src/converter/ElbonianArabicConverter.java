@@ -225,43 +225,43 @@ public class ElbonianArabicConverter {
         int numCast = Integer.parseInt(number);
         String finalNum = "";
         while (numCast != 0) {
-            if (numCast > 1000) {
+            if (numCast >= 1000) {
                 finalNum = finalNum + 'M';
                 numCast = numCast - 1000;
             }
-            else if (numCast > 500) {
+            else if (numCast >= 500) {
                 finalNum = finalNum + 'D';
                 numCast = numCast - 500;
             }
-            else if (numCast > 400) {
+            else if (numCast >= 400) {
                 finalNum = finalNum + 'F';
                 numCast = numCast - 400;
             }
-            else if (numCast > 100) {
+            else if (numCast >= 100) {
                 finalNum = finalNum + 'C';
                 numCast = numCast - 100;
             }
-            else if (numCast > 50) {
+            else if (numCast >= 50) {
                 finalNum = finalNum + 'L';
                 numCast = numCast - 50;
             }
-            else if (numCast > 40) {
+            else if (numCast >= 40) {
                 finalNum = finalNum + 'N';
                 numCast = numCast - 40;
             }
-            else if (numCast > 10) {
+            else if (numCast >= 10) {
                 finalNum = finalNum + 'X';
                 numCast = numCast - 10;
             }
-            else if (numCast > 5) {
+            else if (numCast >= 5) {
                 finalNum = finalNum + 'V';
                 numCast = numCast - 5;
             }
-            else if (numCast > 4) {
+            else if (numCast >= 4) {
                 finalNum = finalNum + 'Y';
                 numCast = numCast - 4;
             }
-            else if (numCast > 1) {
+            else if (numCast >= 1) {
                 finalNum = finalNum + 'I';
                 numCast = numCast - 1;
             }
