@@ -188,8 +188,32 @@ public class ElbonianArabicConverter {
      * @return An arabic value
      */
     public int toArabic() {
-        // TODO Fill in the method's body
-        return 1;
+        int finalNum = 0;
+        for(int i = 0; i<number.length(); i++) {
+            switch(number.charAt(i)) {
+                case 'M' :
+                    finalNum = finalNum + 1000;
+                case 'D' :
+                    finalNum = finalNum + 500;
+                case 'F' :
+                    finalNum = finalNum + 400;
+                case 'C' :
+                    finalNum = finalNum + 100;
+                case 'L' :
+                    finalNum = finalNum + 50;
+                case 'N' :
+                    finalNum = finalNum + 40;
+                case 'X' :
+                    finalNum = finalNum + 10;
+                case 'V' :
+                    finalNum = finalNum + 5;
+                case 'Y' :
+                    finalNum = finalNum + 4;
+                case 'I' :
+                    finalNum = finalNum + 1;
+            }
+        }
+        return finalNum;
     }
 
     /**
@@ -198,8 +222,51 @@ public class ElbonianArabicConverter {
      * @return An Elbonian value
      */
     public String toElbonian() {
-        // TODO Fill in the method's body
-        return "I";
+        int numCast = Integer.parseInt(number);
+        String finalNum = "";
+        while (numCast != 0) {
+            if (numCast > 1000) {
+                finalNum = finalNum + 'M';
+                numCast = numCast - 1000;
+            }
+            else if (numCast > 500) {
+                finalNum = finalNum + 'D';
+                numCast = numCast - 500;
+            }
+            else if (numCast > 400) {
+                finalNum = finalNum + 'F';
+                numCast = numCast - 400;
+            }
+            else if (numCast > 100) {
+                finalNum = finalNum + 'C';
+                numCast = numCast - 100;
+            }
+            else if (numCast > 50) {
+                finalNum = finalNum + 'L';
+                numCast = numCast - 50;
+            }
+            else if (numCast > 40) {
+                finalNum = finalNum + 'N';
+                numCast = numCast - 40;
+            }
+            else if (numCast > 10) {
+                finalNum = finalNum + 'X';
+                numCast = numCast - 10;
+            }
+            else if (numCast > 5) {
+                finalNum = finalNum + 'V';
+                numCast = numCast - 5;
+            }
+            else if (numCast > 4) {
+                finalNum = finalNum + 'Y';
+                numCast = numCast - 4;
+            }
+            else if (numCast > 1) {
+                finalNum = finalNum + 'I';
+                numCast = numCast - 1;
+            }
+        }
+        return finalNum;
     }
 
 }
